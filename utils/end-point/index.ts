@@ -12,12 +12,16 @@ export interface ClientApiMethods {
 type PathWithTrailingSlash<T extends string> = `/${T}`;
 import type { UrlObject } from "url";
 export type Url = string | UrlObject;
+type EndpointParamValues = string | number | boolean;
+type EndpointParams = Record<string, EndpointParamValues>;
+type EndpointQueryValue = string | number | boolean | null | undefined;
+type EndpointQuery = Record<string, EndpointQueryValue>;
 
 export type IntegrationApiCall = {
-  body?: Object;
+  body?: unknown;
   method: Method;
-  urlParams?: Object;
-  queryParams?: Object;
+  urlParams?: EndpointParams;
+  queryParams?: EndpointQuery;
   endpoint: PathWithTrailingSlash<string>;
 };
 
@@ -27,9 +31,9 @@ export const URLEndpoint = ({
   baseUrl,
   endpoint,
 }: {
-  query?: Object;
+  query?: EndpointQuery;
   baseUrl: Url;
-  params?: Object;
+  params?: EndpointParams;
   endpoint: PathWithTrailingSlash<string>;
 }) => {
   //replace params in url
@@ -37,7 +41,7 @@ export const URLEndpoint = ({
 
   if (params) {
     Object.keys(params).forEach((key: string) => {
-      url = url.replace(`:${key}`, params[key]);
+      url = url.replace(`:${key}`, String(params[key]));
     });
   }
 

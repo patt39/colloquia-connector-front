@@ -6,7 +6,12 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { HomeIcon, type LucideIcon } from "lucide-react";
+import {
+  HomeIcon,
+  TrianglesCenterlineDashedHorizontalIcon,
+  VideoIcon,
+  type LucideIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
@@ -21,9 +26,24 @@ type NavbarProps = {
 export function NavMain() {
   const navigationItems: NavbarProps[] = [
     {
-      title: "Dashboard",
+      title: "Tutte le richieste",
       url: "/dashboard",
       icon: HomeIcon,
+    },
+    {
+      title: "Nuova traduzione",
+      url: "/dashboard/new-translation",
+      icon: TrianglesCenterlineDashedHorizontalIcon,
+    },
+    {
+      title: "Face 2 face",
+      url: "/face-to-face",
+      icon: TrianglesCenterlineDashedHorizontalIcon,
+    },
+    {
+      title: "Video interpretariato",
+      url: "/video-interpretariato",
+      icon: VideoIcon,
     },
   ];
 

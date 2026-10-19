@@ -16,7 +16,7 @@ export const GetInfiniteActivitiesAPI = (
         endpoint: "/activities",
         queryParams: {
           ...payload,
-          page: pageParam,
+          page: pageParam as number,
         },
       }),
     initialPageParam: 1,

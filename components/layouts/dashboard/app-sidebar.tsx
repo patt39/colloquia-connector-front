@@ -1,11 +1,9 @@
 import * as React from "react";
 
 import { NavMain } from "@/components/layouts/dashboard/nav-main";
-import { NavUser } from "@/components/layouts/dashboard/nav-user";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,

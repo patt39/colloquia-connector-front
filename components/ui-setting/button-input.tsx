@@ -2,7 +2,6 @@ import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 import { type VariantProps } from "class-variance-authority";
 import { Button, buttonVariants } from "../ui/button";
-import { useIntl } from "react-intl";
 
 export const ButtonInput = ({
   icon,
@@ -18,7 +17,6 @@ export const ButtonInput = ({
     loading?: boolean;
     icon?: React.ReactNode;
   }) => {
-  const t = useIntl();
   return (
     <Button
       {...props}
@@ -31,7 +29,7 @@ export const ButtonInput = ({
       {loading ? (
         <>
           <Spinner className="size-4" />
-          {t.formatMessage({ id: "UTIL.LOADING" })}
+          loading...
         </>
       ) : (
         <>

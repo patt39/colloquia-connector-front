@@ -4,3 +4,12 @@ export type User = {
   email: string;
   // Add other user properties as needed
 };
+
+export type UserLoginReq = {
+  email: string;
+  password: string;
+};
+
+export type UserForgotPasswordReq = {
+  email: string;
+};
