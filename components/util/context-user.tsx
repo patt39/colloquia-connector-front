@@ -1,10 +1,12 @@
 "use client";
 
+import { GetOneUserMeAPI } from "@/endpoints/users";
 // import { GetOneUserMeAPI, IpLocationAPI } from '@/api-site/user';
 import { createContext, FC, ReactNode, useContext } from "react";
+import type { User } from "@/types/users";
 
 type ContextProps = {
-  userStorage?: any;
+  user?: User;
   status: "error" | "success" | "pending";
 };
 
@@ -20,15 +22,13 @@ const useAuthContext = () => {
 };
 
 const ContextProvider: FC<{ children?: ReactNode }> = ({ children }) => {
-  // const { status, data: user } = GetOneUserMeAPI();
+  const { status, data: user } = GetOneUserMeAPI();
 
   return (
     <CreateContext.Provider
       value={{
-        // userStorage: user,
-        // ipLocation,
-        // status: status,
-        ...initContextPropsState,
+        user: user,
+        status: status,
       }}
     >
       {children}

@@ -7,23 +7,13 @@ export interface KeyAsString {
   [key: string]: string;
 }
 
-export type CsvXlsxExtension = "csv" | "xlsx";
-
-export type StatisticTimeRange = {
-  years?: string;
-  months?: string;
-  days?: string;
-  lang?: string;
-  period?: number;
-};
-
 export type PaginationReq = {
   search?: string;
   sort: SortOrderEnum;
   sortBy: string;
   page?: number;
   take?: number;
-} & StatisticTimeRange;
+};
 
 export type IPaginationRes<T> = {
   total: number;
@@ -42,10 +32,4 @@ export type TInfiniteQueryResult<T> = {
   data: IPaginationRes<T>;
   pages: { data: IPaginationRes<T> }[];
   pageParams: number[];
-};
-
-export type StatisticReq = {
-  days?: string;
-  years?: string;
-  months?: string;
 };

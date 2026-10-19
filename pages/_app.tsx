@@ -11,6 +11,7 @@ import { ClientOnly } from "@/components/util/client-only";
 import { LoadingFile } from "@/components/ui-setting/loading-file";
 import { ThemeProvider } from "@/components/util/theme-provider";
 import { ContextProvider } from "@/components/util/context-user";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <ClientOnly fallback={<LoadingFile />}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <HydrationBoundary state={pageProps.dehydratedState}>
-              <Component {...pageProps} />
+              <TooltipProvider>
+                <Component {...pageProps} />
+              </TooltipProvider>
               {Boolean(process.env.NEXT_PUBLIC_QUERY_DEV_TOOLS) && (
                 <ReactQueryDevtools
                   buttonPosition="bottom-right"
