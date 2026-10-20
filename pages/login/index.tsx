@@ -47,7 +47,7 @@ const Login = () => {
         email: email.toLowerCase(),
       });
       if (redirect) {
-        window.location.href = `${redirect}`;
+        //window.location.href = `${redirect}`;
       } else {
         push(`/dashboard`);
         window.location.reload();
