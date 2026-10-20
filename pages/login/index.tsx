@@ -29,6 +29,7 @@ const schema = z.object({
 const Login = () => {
   const { query, push } = useRouter();
   const { redirect } = query;
+  const redirectPath = Array.isArray(redirect) ? redirect[0] : redirect;
 
   const {
     error: errorLogin,
@@ -46,10 +47,10 @@ const Login = () => {
         password,
         email: email.toLowerCase(),
       });
-      if (redirect) {
-        window.location.href = `${redirect}`;
+      if (redirectPath) {
+        await push(redirectPath);
       } else {
-        push(`/dashboard`);
+        await push(`/dashboard`);
         window.location.reload();
       }
       AlertSuccessNotification({
